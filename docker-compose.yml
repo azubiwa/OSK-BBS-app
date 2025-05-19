@@ -19,9 +19,7 @@ services:
     ports:
       - "3002:3000"
     volumes:
-      - ./backend:/rails
-      #- ./backend/config/master.key:/rails/config/master.key:ro
-      # tmp や log をホスト側にマウントしない
+      - ./backend:/rails:delegated    # ← mac 用にパフォーマンス向上
     environment:
       RAILS_ENV: development
       RAILS_LOG_TO_STDOUT: "true"
@@ -29,10 +27,14 @@ services:
   frontend:
     build:
       context: ./frontend
+    working_dir: /app
     command: npm run dev
     ports:
       - "3001:3000"
     volumes:
-      - ./frontend:/app
+      - ./frontend:/app:cached             # ソースコード同期（mac 用：:cached）
+      - frontend_node_modules:/app/node_modules  # 依存だけ永続化
+    restart: unless-stopped
 
-# SQLite はホストにファイルを置くだけなので external volumes は不要です
+volumes:
+  frontend_node_modules:                  # 永続化ボリューム定義
