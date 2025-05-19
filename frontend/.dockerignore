@@ -1,0 +1,8 @@
+# 依存モジュールやビルド成果物を除外
+node_modules
+.next
+
+# OS／エディタの一時ファイルなど
+.DS_Store
+npm-debug.log*
+yarn-error.log*

@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: ./backend
+    working_dir: /rails
+    entrypoint:
+      - bash
+      - /rails/entrypoint.sh
+    command:
+      - bundle
+      - exec
+      - rails
+      - server
+      - -b
+      - "0.0.0.0"
+      - -p
+      - "3000"
+    ports:
+      - "3002:3000"
+    volumes:
+      - ./backend:/rails
+      #- ./backend/config/master.key:/rails/config/master.key:ro
+      # tmp や log をホスト側にマウントしない
+    environment:
+      RAILS_ENV: development
+      RAILS_LOG_TO_STDOUT: "true"
+
+  frontend:
+    build:
+      context: ./frontend
+    command: npm run dev
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./frontend:/app
+
+# SQLite はホストにファイルを置くだけなので external volumes は不要です
