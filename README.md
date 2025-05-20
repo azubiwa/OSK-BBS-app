@@ -19,32 +19,31 @@
     ```
 2. backendはポート3002、frontendはポート3001でアクセス可能です。
 
----
 ## DB ER 図
 
 ```mermaid
 erDiagram
     USERS {
-      INTEGER    id PK
-      VARCHAR    name
-      VARCHAR    email
-      VARCHAR    password_digest
-      DATETIME   created_at
-      DATETIME   updated_at
+        INTEGER    id PK
+        VARCHAR    name
+        VARCHAR    email
+        VARCHAR    password_digest
+        DATETIME   created_at
+        DATETIME   updated_at
     }
     POSTS {
-      INTEGER    id PK
-      VARCHAR    title
-      TEXT       content
-      VARCHAR    tags
-      INTEGER    user_id FK
-      DATETIME   created_at
-      DATETIME   updated_at
+        INTEGER    id PK
+        VARCHAR    title
+        TEXT       content
+        VARCHAR    tags
+        INTEGER    user_id FK
+        DATETIME   created_at
+        DATETIME   updated_at
     }
-    USERS ||--o{ POSTS : "writes"
+    USERS ||--o{ POSTS : writes
+
 
 - `USERS` と `POSTS` テーブルを定義  
 - `user_id` に外部キー（FK）  
 - `USERS ||--o{ POSTS` で「1人のユーザーが複数の投稿を持つ」1対多を表現  
 
-これを GitHub 上でそのまま Markdown としてコミットすれば、対応環境で ER 図がレンダリングされます。
