@@ -42,12 +42,5 @@ erDiagram
     }
     USERS ||--o{ POSTS : writes
 
-
-</details>
-
-- 上の「```markdown」〜「```」までをそのまま README.md にコピー  
-- 1行目の ```mermaid から最後の ``` までが **図の定義部分**  
-- 図の下に説明を書く場合は、必ず閉じた後（コードブロック外）に記述  
-
-これで GitHub の Markdown プレビューや Pages 上できちんと ER 図が表示されるはずです。
+```
 
