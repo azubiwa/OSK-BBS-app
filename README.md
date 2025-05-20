@@ -43,7 +43,3 @@ erDiagram
     USERS ||--o{ POSTS : writes
 
 
-- `USERS` と `POSTS` テーブルを定義  
-- `user_id` に外部キー（FK）  
-- `USERS ||--o{ POSTS` で「1人のユーザーが複数の投稿を持つ」1対多を表現  
-
