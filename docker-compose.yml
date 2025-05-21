@@ -3,6 +3,7 @@ services:
   backend:
     build:
       context: ./backend
+      dockerfile: Dockerfile
     working_dir: /rails
     entrypoint:
       - bash
@@ -19,22 +20,33 @@ services:
     ports:
       - "3002:3000"
     volumes:
-      - ./backend:/rails:delegated    # ← mac 用にパフォーマンス向上
+      - type: bind
+        source: ./backend
+        target: /rails
+        consistency: delegated    # mac でのパフォーマンス向上
     environment:
       RAILS_ENV: development
       RAILS_LOG_TO_STDOUT: "true"
+    tty: true                    # Ctrl-C 等のシグナルを正しく受け取る
+    stdin_open: true
 
   frontend:
     build:
       context: ./frontend
+      dockerfile: Dockerfile
     working_dir: /app
     command: npm run dev
     ports:
       - "3001:3000"
     volumes:
-      - ./frontend:/app:cached             # ソースコード同期（mac 用：:cached）
-      - frontend_node_modules:/app/node_modules  # 依存だけ永続化
+      - type: bind
+        source: ./frontend
+        target: /app
+        consistency: cached       # mac でのパフォーマンス向上
+      - type: volume
+        source: frontend_node_modules
+        target: /app/node_modules
     restart: unless-stopped
 
 volumes:
-  frontend_node_modules:                  # 永続化ボリューム定義
+  frontend_node_modules:
