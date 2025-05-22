@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: osk-bbs-app
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    autoDeploy: true
+    healthCheckPath: /
+    envVars:
+      - key: RAILS_ENV
+        value: production
