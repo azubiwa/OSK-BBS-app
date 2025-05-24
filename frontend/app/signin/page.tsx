@@ -1,12 +1,11 @@
 import SigninFornm from "@/components/SigninFornm";
+import "./page.css";
 
 export default function SigninPage() {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-50">
-      <div className="bg-white p-8 rounded shadow space-y-6 w-full max-w-md">
-        <h2 className="text-center text-2xl font-bold tracking-tight text-gray-900 mb-6">
-          ログイン
-        </h2>
+    <div className="signin-bg">
+      <div className="signin-card">
+        <h2 className="signin-title">ログイン</h2>
         <SigninFornm />
       </div>
     </div>
