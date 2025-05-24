@@ -1,3 +1,4 @@
 # ignore accidental files
 rails
 set
+node_modules/
