@@ -1,14 +1,14 @@
 import Link from "next/link";
-import styles from "./styles/Post.module.css";
+import styles from "./styles/Home.module.css";
 
 type Post = {
   id: number;
   title: string;
-  body: string;
+  content: string;
 };
 
 export default async function Home() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const res = await fetch("http://backend:3000/api/v1/posts");
   const posts: Post[] = await res.json();
 
   return (
@@ -23,7 +23,7 @@ export default async function Home() {
             <Link href={`/posts/${post.id}`} className={styles.postCardBox}>
               <h2>{post.title}</h2>
             </Link>
-            <p>{post.body}</p>
+            <p>{post.content}</p>
             <button className={styles.editButton}>Edit</button>
             <button className={styles.deleteButton}>Delete</button>
           </div>

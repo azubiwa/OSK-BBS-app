@@ -13,16 +13,14 @@ type Props = {
 };
 
 export default async function PostPage({ params }: Props) {
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${params.id}`
-  );
+  const res = await fetch(`http://backend:3000/api/v1/posts${params.id}`);
   const post: Post = await res.json();
 
   return (
     <div className={styles.container}>
       <div className={styles.title}>{post.title}</div>
       <div className={styles.date}>{post.created_at}</div>
-      <p className={styles.content}>{post.content}</p>
+      <p className={styles.content}>{post.body}</p>
     </div>
   );
 }
