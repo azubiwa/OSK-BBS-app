@@ -1,8 +1,9 @@
 import Link from "next/link";
 import styles from "./styles/Home.module.css";
+import DeleteButton from "./deletebutton";
 
 type Post = {
-  id: number;
+  id: string;
   title: string;
   content: string;
 };
@@ -10,6 +11,26 @@ type Post = {
 export default async function Home() {
   const res = await fetch("http://backend:3000/api/v1/posts");
   const posts: Post[] = await res.json();
+
+  const handleDelete = async (postId: string) => {
+    try {
+      const response = await fetch(
+        `http://backend:3000/api/v1/posts/${postId}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to delete");
+      }
+
+      alert("削除に成功しました！");
+      location.reload();
+    } catch (error) {
+      alert("削除に失敗しました。");
+    }
+  };
 
   return (
     <div className={styles.homeContainer}>
@@ -24,8 +45,10 @@ export default async function Home() {
               <h2>{post.title}</h2>
             </Link>
             <p>{post.content}</p>
-            <button className={styles.editButton}>Edit</button>
-            <button className={styles.deleteButton}>Delete</button>
+            <Link href={`/edit-post/${post.id}`}>
+              <button className={styles.editButton}>Edit</button>
+            </Link>
+            <DeleteButton postId={post.id} />
           </div>
         ))}
       </div>
