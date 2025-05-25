@@ -2,7 +2,7 @@
 
 import { useState, ChangeEvent, FormEvent } from "react";
 import "./page.css"; // 同じディレクトリ内のCSSを読み込む
-import TagSelector from "../tag-selector";
+import TagSelector from "../../components/tag-selector";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");

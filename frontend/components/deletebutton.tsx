@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./styles/Home.module.css";
+import styles from "../app/styles/Home.module.css";
 import { useTransition } from "react";
 
 type Props = {

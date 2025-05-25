@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./styles/TagSelector.module.css";
+import styles from "../app/styles/TagSelector.module.css";
 
 export const TAG_OPTIONS = [
   "競プロ",
