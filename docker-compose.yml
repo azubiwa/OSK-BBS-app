@@ -9,15 +9,7 @@ services:
     entrypoint:
       - bash
       - /rails/entrypoint.sh
-    command:
-      - bundle
-      - exec
-      - rails
-      - server
-      - -b
-      - "0.0.0.0"
-      - -p
-      - "3000"
+    command: bash -c "rm -f /rails/tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0"
     ports:
       - "3002:3000"
     # volumes:
