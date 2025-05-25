@@ -2,10 +2,12 @@
 
 import { useState, ChangeEvent, FormEvent } from "react";
 import styles from "../styles/Home.module.css";
+import TagSelector from "../tag-selector";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -47,6 +49,10 @@ const CreatePost = () => {
           onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
             setContent(e.target.value)
           }
+        />
+        <TagSelector
+          selectedTags={selectedTags}
+          setSelectedTags={setSelectedTags}
         />
         <button type="submit" className={styles.button}>
           投稿
