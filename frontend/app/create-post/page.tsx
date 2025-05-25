@@ -21,6 +21,7 @@ const CreatePost = () => {
         body: JSON.stringify({
           title,
           content,
+          tags: selectedTags,
         }),
       });
 
