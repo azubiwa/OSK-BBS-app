@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, ChangeEvent, FormEvent } from "react";
-import styles from "../styles/Home.module.css";
+import "./page.css"; // 同じディレクトリ内のCSSを読み込む
 import TagSelector from "../tag-selector";
 
 const CreatePost = () => {
@@ -32,20 +32,20 @@ const CreatePost = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>ポスト新規登録</h1>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <label className={styles.label}>タイトル</label>
+    <div className="container">
+      <h1 className="title">ポスト新規登録</h1>
+      <form className="form" onSubmit={handleSubmit}>
+        <label className="label">タイトル</label>
         <input
           type="text"
-          className={styles.input}
+          className="input"
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setTitle(e.target.value)
           }
         />
-        <label className={styles.label}>本文</label>
+        <label className="label">本文</label>
         <textarea
-          className={styles.textarea}
+          className="textarea"
           onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
             setContent(e.target.value)
           }
@@ -54,7 +54,7 @@ const CreatePost = () => {
           selectedTags={selectedTags}
           setSelectedTags={setSelectedTags}
         />
-        <button type="submit" className={styles.button}>
+        <button type="submit" className="button">
           投稿
         </button>
       </form>
