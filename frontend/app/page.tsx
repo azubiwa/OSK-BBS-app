@@ -34,7 +34,7 @@ export default async function Home() {
 
   return (
     <div className={styles.homeContainer}>
-      <h2>OSK-BBS-APP</h2>
+      <h2 className={styles.title}>OSK-BBS-APP</h2>
       <Link href="/create-post" className={styles.createButton}>
         Create new Post
       </Link>
@@ -42,13 +42,16 @@ export default async function Home() {
         {posts.slice(0, 5).map((post) => (
           <div key={post.id} className={styles.postCard}>
             <Link href={`/posts/${post.id}`} className={styles.postCardBox}>
-              <h2>{post.title}</h2>
+              <h2 className={styles.postCardTitle}>{post.title}</h2>
             </Link>
-            <p>{post.content}</p>
+            <p className={styles.postCardContent}>{post.content}</p>
+
             <Link href={`/edit-post/${post.id}`}>
-              <button className={styles.editButton}>Edit</button>
+             <button className={styles.editButton}>Edit</button>
             </Link>
+
             <DeleteButton postId={post.id} />
+
           </div>
         ))}
       </div>
