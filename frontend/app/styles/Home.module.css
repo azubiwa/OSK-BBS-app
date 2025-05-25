@@ -51,14 +51,14 @@
   margin: 0 auto;
   padding: 32px 0;
   color: #f2f3f5;
-  font-family: 'Segoe UI', 'Meiryo', 'sans-serif';
+  font-family: "Segoe UI", "Meiryo", "sans-serif";
 }
 
 .postCard {
   background: #2b2d31;
   border: 1px solid #232428;
   border-radius: 12px;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
   padding: 20px 24px;
   margin-bottom: 20px;
   transition: box-shadow 0.2s;
@@ -98,14 +98,15 @@
   text-decoration: none;
   margin-bottom: 32px;
   transition: background 0.2s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .createButton:hover {
   background: #4752c4;
 }
 
-.editButton, .deleteButton {
+.editButton,
+.deleteButton {
   background: #232428;
   color: #f2f3f5;
   border: none;
@@ -134,4 +135,19 @@
 .deleteButton:hover {
   background-color: #9e1b1b;
   color: #fff;
+}
+
+.tagContainer {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background-color: #e0f7fa;
+  color: #006064;
+  padding: 0.2em 0.6em;
+  border-radius: 0.5em;
+  font-size: 0.8rem;
 }

@@ -45,13 +45,20 @@ export default async function Home() {
               <h2 className={styles.postCardTitle}>{post.title}</h2>
             </Link>
             <p className={styles.postCardContent}>{post.content}</p>
+            <div className={styles.tagContainer}>
+              {post.tags &&
+                post.tags.map((tag, idx) => (
+                  <span key={idx} className={styles.tag}>
+                    {tag}
+                  </span>
+                ))}
+            </div>
 
             <Link href={`/edit-post/${post.id}`}>
-             <button className={styles.editButton}>Edit</button>
+              <button className={styles.editButton}>Edit</button>
             </Link>
 
             <DeleteButton postId={post.id} />
-
           </div>
         ))}
       </div>
